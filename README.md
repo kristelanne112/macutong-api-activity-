@@ -37,3 +37,13 @@ Returning `404 Not Found` clearly informs the client that the requested resource
 **4. Testing**
 (Paste a screenshot of a successful GET request here)
 ![Successful GET Request](src/asset/screenshot.png)
+
+
+
+## Models & Relationships
+
+### Why did I choose to Embed the Review?
+I chose to embed the reviews inside the Dish because reviews are directly related to a specific Dish and are small in size, making it efficient to store them together. Embedding allows me to fetch a Dish along with all its reviews in a single query, which is faster and simpler than querying a separate collection. Since reviews do not need to exist independently of the Dish, embedding makes sense conceptually and reduces unnecessary complexity. Overall, embedding simplifies data management and ensures that all relevant information for a Dish is stored in one place.
+
+### Why did I choose to Reference the Chef?
+I chose to reference the Chef in the Dish model because chefs exist independently of dishes and may be associated with multiple dishes. By storing only the Chef’s _id in each Dish, I avoid duplicating Chef information and can maintain consistency across the database. Referencing allows me to easily retrieve full Chef details when needed using Mongoose’s populate() method, without storing redundant data. This approach keeps the data normalized, simplifies updates to Chef information, and ensures a clear relationship between Dishes and Chefs while maintaining efficient queries.
